@@ -1,27 +1,10 @@
-@prefix orcid: <http://orcid.org/> .
-@prefix sio: <http://semanticscience.org/resource/> .
-@prefix datacite: <http://purl.org/spar/datacite/> .
-@prefix country: <http://psi.oasis-open.org/iso/3166/#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix fdp: <http://rdf.biosemantics.org/ontologies/fdp-o#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix iso3166: <http://psi.oasis-open.org/iso/639/#> .
-@prefix lang: <http://id.loc.gov/vocabulary/iso639-1/> .
-@prefix ldp: <http://www.w3.org/ns/ldp#> .
 @prefix lexvo: <http://lexvo.org/id/iso639-3/> .
-@prefix mesh: <http://id.nlm.nih.gov/mesh/> .
-@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
-@prefix ocre: <http://purl.org/net/OCRe/OCRe.owl#> .
-@prefix ocresd: <http://purl.org/net/OCRe/study_design.owl#> .
-@prefix omiabis: <http://purl.obolibrary.org/obo/> .
-@prefix org: <http://www.w3.org/ns/org#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix r3d: <http://www.re3data.org/schema/3-0#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix srb: <http://purl.org/sardinian-registry-of-biomedical-studies/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://purl.org/srbr/fdp/catalog> a dcat:Catalog, dcat:Resource;
   dct:title "Registry of biomedical research";
