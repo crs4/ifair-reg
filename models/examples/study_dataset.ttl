@@ -1,0 +1,73 @@
+@prefix datacite: <http://purl.org/spar/datacite/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fdp: <http://rdf.biosemantics.org/ontologies/fdp-o#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix icd: <http://purl.bioontology.org/ontology/ICD10/> .
+@prefix lexvo: <http:///lexvo.org/id/iso639-3/> .
+@prefix mesh: <http://id.nlm.nih.gov/mesh/> .
+@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix orcid: <http://orcid.org/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix r3d: <http://www.re3data.org/schema/3-0#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#prefLabel> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <http://purl.org/srbr/dataset/> .
+
+:study1 a dcat:dataset, sio:sio_001066  ;  # 1066: study
+    rdfs:label "Example study"@en;
+    dcat:title "This is an example clinical trial with useful data"@en ;
+    dcat:hasVersion  "1.0";  
+    dcat:themeTaxonomy icd:345.9 ;  #   Theme 
+    dct:publisher <orcid:wwww-xxxx-yyyy-zzzz>;
+    dct:description "This study wants to study something";
+    dct:language <http://lexvo.org/id/iso639-3/eng>;
+    fdp:metadataIssued "2021-02-03T00:00:00Z"^^xsd:dateTime;
+    dct:issued "2021-02-03T00:00:00Z"^^xsd:dateTime;
+    dct:modified "2021-02-03T00:00:00Z"^^xsd:dateTime;
+    fdp:metadataModified "2021-02-03T00:00:00Z"^^xsd:dateTime;
+    fdp:metadataIdentifier :study1, [ 
+        a datacite:Identifier;
+        dct:identifier :study1.
+    ];
+    dcat:distribution <http://purl.org/srbr/distribution/study1>;
+    dcat:theme icd:G40;
+    sio:SIO_000008 [  # sio:has_attribute
+        a ncit:C101302;  # Therapeutic Area
+        ncit:code mesh:D009462 ;
+    ];
+    sio:SIO_000061 [
+        a org:Organization, ncit:C21541;  # ncit health care facility
+        org:identifier "department";
+        org:subOrganizationOf [ 
+            a org:Organization, ncit:C16696; # ncit -> hospital
+            org:identifier "hospital";
+            org:subOrganizationOf [ 
+                a org:Organization;
+                org:identifier "Institution";
+            ];
+            sio:SIO_000310 [ a org:Organization, sio:;
+                org:identifier "AOB";
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "Azienda Ospedaliera Brotzu"
+                ]
+            ]; 
+    ].
+
+:study_pi a foaf:Person, sio:SIO_000498;  # person
+    foaf:name "Name of the PI" ;
+    foaf:surname "Pruna" ;
+    org:memberOf :Organization_AOB ;
+    sio:SIO_000228 [ # has role
+        a obo:obo:OBI_0000103;  # obo principal investigator role
+        sio:SIO_000356 :study1 .  # is realized in
+    ].
+
+:ethical_committee a ncit:C142541, org:Organization, sio:SIO_000688 ;  # ncit:C142541 -> Ethics committee, # sio_000688 Institute
+	  org:identifier "Ethical committe" ;
+      sio:SIO_000228 [ # has role
+        a obo:OBI_0000154 ;  # role of institutional review board (i.e., ethics committe)
+        sio:SIO_000356 :study1 .  # is realized in
+      ].
